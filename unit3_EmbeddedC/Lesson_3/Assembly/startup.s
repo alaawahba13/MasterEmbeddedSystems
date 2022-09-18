@@ -2,7 +2,7 @@
 
 .section .vectors
 
-.word 0x20001000 // stack Pointer 
+.word 0x020001000   // stack Pointer 
 .word _reset    
 .word  _vector_handler		/* NMI 		 */
 .word  _vector_handler 		/* HARD FAULT 	 */ 

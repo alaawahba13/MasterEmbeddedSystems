@@ -9,64 +9,64 @@ SRAM             0x0000000020000000 0x0000000000005000 xrw
 Linker script and memory map
 
 
-.text           0x0000000008000000      0x138
+.text           0x0000000008000000      0x134
  *(.vectors*)
  .vectors       0x0000000008000000       0x14 startup.o
                 0x0000000008000000                vectors
  *(.text*)
  .text          0x0000000008000014       0x80 main.o
                 0x0000000008000014                main
- .text          0x0000000008000094       0xa4 startup.o
+ .text          0x0000000008000094       0xa0 startup.o
                 0x0000000008000094                NMI_Handler
                 0x0000000008000094                Bus_Handler
                 0x0000000008000094                Default_Handler
                 0x0000000008000094                H_Fault_handler
                 0x00000000080000a6                Reset_Handler
  *(.rodata)
-                0x0000000008000138                . = ALIGN (0x4)
-                0x0000000008000138                _E_text = .
+                0x0000000008000134                . = ALIGN (0x4)
+                0x0000000008000134                _E_text = .
 
-.glue_7         0x0000000008000138        0x0
- .glue_7        0x0000000008000138        0x0 linker stubs
+.glue_7         0x0000000008000134        0x0
+ .glue_7        0x0000000008000134        0x0 linker stubs
 
-.glue_7t        0x0000000008000138        0x0
- .glue_7t       0x0000000008000138        0x0 linker stubs
+.glue_7t        0x0000000008000134        0x0
+ .glue_7t       0x0000000008000134        0x0 linker stubs
 
-.vfp11_veneer   0x0000000008000138        0x0
- .vfp11_veneer  0x0000000008000138        0x0 linker stubs
+.vfp11_veneer   0x0000000008000134        0x0
+ .vfp11_veneer  0x0000000008000134        0x0 linker stubs
 
-.v4_bx          0x0000000008000138        0x0
- .v4_bx         0x0000000008000138        0x0 linker stubs
+.v4_bx          0x0000000008000134        0x0
+ .v4_bx         0x0000000008000134        0x0 linker stubs
 
-.iplt           0x0000000008000138        0x0
- .iplt          0x0000000008000138        0x0 main.o
+.iplt           0x0000000008000134        0x0
+ .iplt          0x0000000008000134        0x0 main.o
 
-.rel.dyn        0x0000000008000138        0x0
- .rel.iplt      0x0000000008000138        0x0 main.o
+.rel.dyn        0x0000000008000134        0x0
+ .rel.iplt      0x0000000008000134        0x0 main.o
 
-.data           0x0000000020000000        0x8 load address 0x0000000008000138
-                0x0000000020000000                _S_data = .
+.data           0x0000000008000134        0x8
+                0x0000000008000134                _S_data = .
  *(.data*)
- .data          0x0000000020000000        0x8 main.o
-                0x0000000020000000                R_ODR
-                0x0000000020000004                R_CRH
- .data          0x0000000020000008        0x0 startup.o
-                0x0000000020000008                . = ALIGN (0x4)
-                0x0000000020000008                _E_data = .
+ .data          0x0000000008000134        0x8 main.o
+                0x0000000008000134                R_ODR
+                0x0000000008000138                R_CRH
+ .data          0x000000000800013c        0x0 startup.o
+                0x000000000800013c                . = ALIGN (0x4)
+                0x000000000800013c                _E_data = .
 
-.igot.plt       0x0000000020000008        0x0 load address 0x0000000008000140
- .igot.plt      0x0000000020000008        0x0 main.o
+.igot.plt       0x000000000800013c        0x0
+ .igot.plt      0x000000000800013c        0x0 main.o
 
-.bss            0x0000000020000008     0x1000 load address 0x0000000008000140
-                0x0000000020000008                _S_bss = .
+.bss            0x0000000020000000     0x1000
+                0x0000000020000000                _S_bss = .
  *(.bss*)
- .bss           0x0000000020000008        0x0 main.o
- .bss           0x0000000020000008        0x0 startup.o
-                0x0000000020000008                . = ALIGN (0x4)
-                0x0000000020000008                _E_bss = .
-                0x0000000020001008                . = (. + 0x1000)
- *fill*         0x0000000020000008     0x1000 
-                0x0000000020001008                Stack_top = .
+ .bss           0x0000000020000000        0x0 main.o
+ .bss           0x0000000020000000        0x0 startup.o
+                0x0000000020000000                . = ALIGN (0x4)
+                0x0000000020000000                _E_bss = .
+                0x0000000020001000                . = (. + 0x1000)
+ *fill*         0x0000000020000000     0x1000 
+                0x0000000020001000                Stack_top = .
 LOAD main.o
 LOAD startup.o
 OUTPUT(lab2.elf elf32-littlearm)
@@ -89,9 +89,9 @@ OUTPUT(lab2.elf elf32-littlearm)
  .debug_aranges
                 0x0000000000000020       0x20 startup.o
 
-.debug_line     0x0000000000000000      0x26c
+.debug_line     0x0000000000000000      0x25c
  .debug_line    0x0000000000000000       0x69 main.o
- .debug_line    0x0000000000000069      0x203 startup.o
+ .debug_line    0x0000000000000069      0x1f3 startup.o
 
 .debug_str      0x0000000000000000      0x1a0
  .debug_str     0x0000000000000000      0x116 main.o
