@@ -1,1 +1,0 @@
-Toggling leds using STM32 mcu 
