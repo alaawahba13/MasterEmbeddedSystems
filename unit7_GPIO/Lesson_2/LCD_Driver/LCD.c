@@ -48,8 +48,11 @@ void lcd_Send_Command(unsigned char command){
 
 #ifdef EIGHT_BIT_MODE
 	isBusy();
+	// 1.Write
 	LCD_PORT = command;
+	// 2.Reset
 	LCD_CONTROL_PORT &= ~ ((1<<ReadWrite) | (1<< REGISTER_SELECT));
+	// 3. Reactivate Enable
 	lcd_kick();
 #endif
 #ifdef FOUR_BIT_MODE
@@ -69,10 +72,12 @@ void lcd_Send_Char(unsigned char character){
 
 #ifdef EIGHT_BIT_MODE
 	isBusy();
-	//set the RS to 1 to send data
+	//1. set the RS to 1 to send data
 	LCD_CONTROL_PORT |= (1<< REGISTER_SELECT);
+	//2. Write data
 	LCD_PORT = character;
 	LCD_CONTROL_PORT &= ~ (1<<ReadWrite);
+	// Reactivate Enable
 	lcd_kick();
 #endif
 #ifdef FOUR_BIT_MODE
@@ -122,10 +127,25 @@ void lcd_Clear_Screen(void){
 	lcd_Send_Command(CLEAR_SCREEN);
 }
 void lcd_display_number(int Number){
+	char str[7];
+	// Converts Int to String
+	sprintf(str,"%d",Number);
+	lcd_send_String(str);
+}
+void lcd_display_Real_number(double Number){
+	char str[16];
+	char *tmpSign  = (Number >0) ? "" : "-";
+	float tmpNum    = (Number >0) ? Number : -Number;
+
+	int tmpVal = tmpNum;
+	float tmpFrac  = tmpNum - tmpVal;
+
+	int Frac = tmpFrac * 10000;
+
+	sprintf(str, "%s%d.%04d", tmpSign, tmpVal, Frac);
+	lcd_send_String(str);
 
 }
-
-
 void lcd_kick(){
 	// Enable =0 >> LCD Busy
 	CLEAR(LCD_CONTROL_PORT, ENABLE_SWITCH);
