@@ -15,7 +15,6 @@ void isBusy(void){
 	CLEAR(LCD_CONTROL_PORT, REGISTER_SELECT);
 	// wait for the enable cycle
 	lcd_kick();
-	LCD_DDR= 0xFF;  //output
 	CLEAR(LCD_CONTROL_PORT, ReadWrite); //write
 }
 
