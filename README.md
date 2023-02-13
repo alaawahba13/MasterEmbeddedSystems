@@ -13,7 +13,7 @@
 ## ***Second Term*** :   [ ***In_Progress*** ]
  - [x] ![Unit 6: MCU Fundamentals](https://github.com/alaawahba13/MasterEmbeddedSystems/tree/main/unit6_MCUFundmentals) [ ***Done*** ] 
  - [x] ![Unit 7: MCU Essential Peripherals](https://github.com/alaawahba13/MasterEmbeddedSystems/tree/main/unit7_GPIO)) [ ***Done*** ] 
- - [x] ![Unit 8: MCU Interfacing]() [ ***In_Progress****** ]
+ - [x] ![Unit 8: MCU Interfacing]() [ ***In_Progress*** ]
 
 
 
