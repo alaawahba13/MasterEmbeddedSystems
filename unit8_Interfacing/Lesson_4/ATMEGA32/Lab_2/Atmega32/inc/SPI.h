@@ -12,16 +12,18 @@
 #include "Atmega32.h"
 #include "BIT_MATH.h"
 
+#define MASTER_MODE
+// #define SLAVE_MODE
+
 #define SPI_PORT			PORT_B
 #define MOSI 				PIN_5
 #define MISO 				PIN_6
 #define SCLK 				PIN_7
 #define SS	 				PIN_4
 
-void SPI_MasterInit();
-uint8 SPI_MaterSendData(uint8 Data);
-uint8 SPI_SlaveRecieveData(uint8 Data);
-void SPI_SlaveInit();
+
+void SPI_Init();
+uint8 SPI_SlendRecieveData(uint8 Data);
 
 
 
