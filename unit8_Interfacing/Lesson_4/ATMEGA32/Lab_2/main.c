@@ -11,14 +11,14 @@
 
 void execute(uint8 cmd, uint8 data){
 	DIO_WritePin(SS, SPI_PORT, LOW);
-	SPI_MaterSendData(cmd);
-	SPI_MaterSendData(data);
+	SPI_SendRecieveData(cmd);
+	SPI_SendRecieveData(data);
 	DIO_WritePin(SS, SPI_PORT, HIGH);
 }
 
 int main(void) {
 	uint8 counter=0;
-		SPI_MasterInit();
+		SPI_Init();
 		execute(0x09,0xFF); //Decode mode B for digits 7-0
 		execute(0x0A, 0x0F); // Max intensity
 		execute(0x0C,0x01); // shut down > >Normal operation
