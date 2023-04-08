@@ -33,16 +33,3 @@ int main(void){
 
 	return 0;
 }
-/*DIO_initPin(PIN_5, PORT_D, OUTPUT);
-	DIO_initPin(PIN_6, PORT_D, OUTPUT);
-	DIO_initPin(PIN_7, PORT_D, OUTPUT);
-	while (1) {
-			for (int i = 5; i <= 7; i++) {
-				DIO_WritePin(i, PORT_D, HIGH);
-				_delay_ms(1000);
-			}
-			for (int i = 7; i >= 5; i--) {
-				DIO_WritePin(i, PORT_D, LOW);
-				_delay_ms(1000);
-			}
-		}*/
