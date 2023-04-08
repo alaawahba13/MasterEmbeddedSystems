@@ -24,12 +24,12 @@ void USART_init(void);
 void USART_send(uint8 data);
 uint8 USART_recieve();
 
-void USART_sendString(char *str);
+void USART_sendString(uint8 *str);
 void USART_sendNumber(uint32 data);
+
 
 char* USART_recieveString();
 uint32 USART_recieveNumber();
-
 
 
 
