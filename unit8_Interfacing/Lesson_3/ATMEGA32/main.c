@@ -10,7 +10,7 @@
 int main(void){
 	lcd_init();
 	USART_init();
-	uint8 str[100];
+	uint8 str[100]; 
 	uint8 y,x=0;
 
 	//lcd_send_String("Hi ");
