@@ -15,7 +15,7 @@
  * 							Generic Variables
  * =======================================================================================
  */
-USART_pinConfig_t *Global_pinConfig = NULL;
+USART_pinConfig_t* Global_pinConfig = NULL;
 /*
  * =======================================================================================
  * 							Generic Functions
@@ -32,7 +32,7 @@ USART_pinConfig_t *Global_pinConfig = NULL;
  */
 void USART_init(USART_pinConfig_t *pinConfig, USART_Registers_t *USARTx) {
 	Global_pinConfig = pinConfig;
-	uint16 pclk;
+	uint32 BRR, pclk;
 
 	/*            Enable USART clocks      */
 	if (USARTx == USART1) {
@@ -64,7 +64,9 @@ void USART_init(USART_pinConfig_t *pinConfig, USART_Registers_t *USARTx) {
 	} else {
 		pclk = RCC_getPCKL1_Freq();
 	}
-	USARTx->BRR = USART_BRR(pclk, Global_pinConfig->BaudRate);
+
+	BRR = USART_BRR(pclk, Global_pinConfig->BaudRate);
+	USARTx->BRR = BRR;
 
 	/*            Enabling The Interrupt      */
 	if (Global_pinConfig->IRQ_Enable != USART_NONE) {
@@ -239,23 +241,24 @@ void USART_Recieve(USART_Registers_t *USARTx, uint16 *pTxBuffer,
 	//Check The Data length
 
 	if (Global_pinConfig->DataLength == USART_DataLength9) {
-		if (Global_pinConfig->Parity != USART_Parity_None) {
-			// If parity is enabled  then ignore the MSB
-			*((uint16 *)pTxBuffer) = (USARTx->DR & (uint8)0xFF);
+		if (Global_pinConfig->Parity == USART_Parity_None) {
+			// case No parity
+				*((uint16 *)pTxBuffer)= USARTx->DR;
 
 		} else {
-			// case No parity
-			*((uint16 *)pTxBuffer)= USARTx->DR;
+			// If parity is enabled  then ignore the MSB
+			*((uint16 *)pTxBuffer) = (USARTx->DR & (uint8)0xFF);
 		}
 
 	} else {
-		if (Global_pinConfig->Parity != USART_Parity_None) {
-			// If parity is enabled  then ignore the MSB
-			*((uint16 *)pTxBuffer) = (USARTx->DR & (uint8)0x7F);
-
-		} else {
+		if (Global_pinConfig->Parity == USART_Parity_None) {
 			// case No parity
 			*((uint16 *)pTxBuffer) = (USARTx->DR & (uint8)0xFF);
+
+		} else {
+
+			// If parity is enabled  then ignore the MSB
+			*((uint16 *)pTxBuffer) = (USARTx->DR & (uint8)0x7F);
 		}
 	}
 }
