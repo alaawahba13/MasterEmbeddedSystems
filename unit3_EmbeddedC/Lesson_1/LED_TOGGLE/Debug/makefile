@@ -48,8 +48,8 @@ Test.bin \
 all: Test.elf secondary-outputs
 
 # Tool invocations
-Test.elf: $(OBJS) $(USER_OBJS) C:\Users\Qebaa\Documents\STM32CubeIDE\workspace_1.4.0\Test\STM32F030C6TX_FLASH.ld
-	arm-none-eabi-gcc -o "Test.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m0 -T"C:\Users\Qebaa\Documents\STM32CubeIDE\workspace_1.4.0\Test\STM32F030C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Test.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Test.elf: $(OBJS) $(USER_OBJS) D:\Courses\Embedded\MasterEmbeddedSystems\unit3_EmbeddedC\Lesson_1\LED_TOGGLE\STM32F030C6TX_FLASH.ld
+	arm-none-eabi-gcc -o "Test.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m0 -T"D:\Courses\Embedded\MasterEmbeddedSystems\unit3_EmbeddedC\Lesson_1\LED_TOGGLE\STM32F030C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Test.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

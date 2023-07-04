@@ -517,11 +517,10 @@ OUTPUT(Test.elf elf32-littlearm)
  .debug_line    0x0000000000000000      0x13a Src/main.o
  .debug_line    0x000000000000013a       0x84 Startup/startup_stm32f030c6tx.o
 
-.debug_str      0x0000000000000000     0x2dda
- .debug_str     0x0000000000000000     0x2da9 Src/main.o
-                                       0x2e12 (size before relaxing)
- .debug_str     0x0000000000002da9       0x31 Startup/startup_stm32f030c6tx.o
-                                         0x72 (size before relaxing)
+.debug_str      0x0000000000000000     0x2e2e
+ .debug_str     0x0000000000000000     0x2dbc Src/main.o
+                                       0x2e25 (size before relaxing)
+ .debug_str     0x0000000000002dbc       0x72 Startup/startup_stm32f030c6tx.o
 
 .comment        0x0000000000000000       0x7b
  .comment       0x0000000000000000       0x7b Src/main.o
