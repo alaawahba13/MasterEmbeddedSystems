@@ -5,10 +5,11 @@
  *      Author: Alaa Wahba
  */
 
-#include "USART.h"
+#include "inc/USART.h"
 #define Default_Stop 		'\r'
 static  uint32 flag=1;
 static uint8 *TX_str;
+
 void USART_init(void) {
 	/*   Baud rate   */
 	// For 9600 bps
@@ -50,11 +51,7 @@ uint8 USART_recieve() {
 }
 
 void USART_sendNumber(uint32 data) {
-	/*uint8 *p = &data;
-	 USART_send(p[0]);
-	 USART_send(p[1]);
-	 USART_send(p[2]);
-	 USART_send(p[3]);*/
+
 	char str[7];
 
 	sprintf(str, "%d", data);  // Adjust the formatting to your liking.
@@ -63,14 +60,13 @@ void USART_sendNumber(uint32 data) {
 
 }
 uint32 USART_recieveNumber() {
-	/*uint32 num;
-	 uint8 *p =&num;
+	uint32 num;
+	/* uint8 *p = (uint8 *)&num;
 	 p[0] = USART_recieve();
 	 p[1] = USART_recieve();
 	 p[2] = USART_recieve();
-	 p[3] = USART_recieve();
-	 return  num;*/
-	return 0;
+	 p[3] = USART_recieve();*/
+	 return  num;
 }
 void USART_sendString(uint8 *str) {
 	for (uint8 i = 0; i < str[i]; i++)
@@ -91,7 +87,7 @@ void USART_recieveString(uint8 *Buff) {
 }
 
 uint8 USART_recievePeriodicData(uint8 *data){
-	if(GET(UCSRA, RXC)){
+	if(GET(UCSRA, RXC)){ // No blocking
 		*data = UDR;
 		return 1; 	//As an indication that there's sent data
 	}
@@ -99,6 +95,8 @@ uint8 USART_recievePeriodicData(uint8 *data){
 }
 
 //Interrupt
+
+// Doesn't check if data is sent or not
 void USART_sendNoBlock(uint8 data){
 	UDR =data;
 }
@@ -121,22 +119,25 @@ void USART_RX_interrupt_Disable(){
 }
 void USART_send_string_Asynch(uint8 *str){
     if(flag == 1){
-        USART_TX_interrupt_Enable();
-        USART_sendNoBlock(str[0]);
-        TX_str = str;
+    	 USART_sendNoBlock(str[0]);
+    	   TX_str = str;
         flag =0;
+   	 USART_TX_interrupt_Enable();
+
     }
 }
 
-ISR(USART_TXC_vect){
+void __vector_15 (void)		__attribute__ ((signal)) ;
+void __vector_15 (void){
 		static uint8 i =1;
-		if(TX_str[i] != 0){
+		if(TX_str[i] != '\0'){
 			USART_sendNoBlock(TX_str[i]);
-			i++;
-		}
-		else{
+			  i++;
+
+		}else{
 			i =1 ;
 			flag = 1; // Flag is set to one when transmit is complete.
-			USART_TX_interrupt_Disable();
+		//	USART_TX_interrupt_Disable();
+
 		}
 }

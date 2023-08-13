@@ -11,8 +11,8 @@
 //Includes
 //-----------------------------
 #include "Atmega32.h"
-#include "BIT_MATH.h"
-#include <avr/interrupt.h>
+#include "../../Library/BIT_MATH.h"
+#include "../../HAL/LCD_Driver/lcd.h"
 
 /*
 * ===============================================
