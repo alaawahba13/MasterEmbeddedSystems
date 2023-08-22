@@ -13,7 +13,7 @@
 
 - [Unit 6: MCU Fundamentals](https://github.com/alaawahba13/MasterEmbeddedSystems/tree/main/unit6_MCUFundmentals) [Done] 
 - [Unit 7: MCU Essential Peripherals](https://github.com/alaawahba13/MasterEmbeddedSystems/tree/main/unit7_GPIO) [Done] 
-- [Unit 8: MCU Interfacing](https://github.com/alaawahba13/MasterEmbeddedSystems/tree/main/unit8_Interfacing) [In_Progress] 
+- [Unit 8: MCU Interfacing](https://github.com/alaawahba13/MasterEmbeddedSystems/tree/main/unit8_Interfacing) [Done] 
 - [Unit 9: Timers_ADC](https://github.com/alaawahba13/MasterEmbeddedSystems/tree/main/unit9_timers_adc) [Done]
 - [Unit 10: Software_Tooling ](https://github.com/alaawahba13/MasterEmbeddedSystems/tree/main/unit9_timers_adc) [In_Progress] 
 
