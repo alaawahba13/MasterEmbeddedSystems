@@ -8,7 +8,7 @@ int main() {
         u8 head[5];   
         u32 pop_value,stack_size=0,top_value;
         Stack my_stack = { 5, &head[0] }; 
-        LIFO_status ret = NOK;
+        ret_status ret = NOK;
         ret = LIFO_init(&my_stack);
         
     	if (ret == OK) {
