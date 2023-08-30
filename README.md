@@ -7,7 +7,7 @@
 
 - Unit 1: Diploma Prerequisites [Done]
 - [Unit 2: C Programming](https://github.com/alaawahba13/MasterEmbeddedSystems/tree/main/unit2_c) [Done] 
-- [Unit 3: Embedded_C ](https://github.com/alaawahba13/MasterEmbeddedSystems/tree/main/unit3_EmbeddedC) [In_Progress]
+- [Unit 3: Embedded_C ](https://github.com/alaawahba13/MasterEmbeddedSystems/tree/main/unit3_EmbeddedC) [Done]
 - [Unit 4: System Architect ](https://github.com/alaawahba13/MasterEmbeddedSystems/tree/main/unit4_SystemArchitect) [In_Progress] 
 ## ***Second Term***: [In_Progress]
 
