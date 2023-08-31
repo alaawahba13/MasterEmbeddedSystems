@@ -45,4 +45,5 @@ int main() {
 ### Output
 
 
+<img width="277" alt="Screenshot 2023-08-30 183928" src="https://github.com/alaawahba13/MasterEmbeddedSystems/assets/101985923/9db0d3a0-2f2d-429d-a4d5-4cce5f0282f5">
 
